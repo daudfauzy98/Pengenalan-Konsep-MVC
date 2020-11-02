@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Antrian</title>
+   <style>
+      .antrian {
+         height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      .txt-antrian {
+         font-size: 2rem;
+         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         font-weight: bold;
+      }
+   </style>
+</head>
+<body>
+   <div class="antrian">
+      <span id="txt-antrian" class="txt-antrian">
+         {{ .antrian }}
+      </span>
+   </div>
+
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+
+   <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+
+   <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+         apiKey: "AIzaSyA_30afoA7GPyJv7z-mMmRPfPt2308Bt28",
+         authDomain: "pengenalan-mvc.firebaseapp.com",
+         databaseURL: "https://pengenalan-mvc.firebaseio.com",
+         projectId: "pengenalan-mvc",
+         storageBucket: "pengenalan-mvc.appspot.com",
+         messagingSenderId: "150724854572",
+         appId: "1:150724854572:web:4b1835d9f484dc559ba289"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      let antrianRef = firebase.database().ref('antrian')
+      antrianRef.on('value', function(snapshot) {
+         const antrian = snapshot.val();
+
+         const currentAntrian = antrian.find(item => item != null && item.status === false);
+
+         document.getElementById("txt-antrian").innerHTML = currentAntrian.id
+      })
+   </script>
+</body>
+</html>
