@@ -15,5 +15,5 @@ func main() {
 	router.DELETE("/api/v1/antrian/id/:idAntrian/delete", controller.DeleteAntrianHandler)
 	router.GET("/antrian", controller.PageAntrianHandler)
 
-	router.Run(":8000")
+	router.Run(":8080")
 }

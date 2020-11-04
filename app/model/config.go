@@ -12,7 +12,7 @@ import (
 var client *db.Client
 var ctx context.Context
 
-func initDB() {
+func init() {
 	ctx = context.Background()
 	conf := &firebase.Config{
 		DatabaseURL: "https://pengenalan-mvc.firebaseio.com/",

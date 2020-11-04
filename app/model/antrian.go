@@ -47,10 +47,8 @@ func AddAntrian() (bool, error) {
 func GetAntrian() (bool, []map[string]interface{}, error) {
 	var data []map[string]interface{}
 	ref := client.NewRef("antrian")
-
-	err := ref.Get(ctx, &data)
-	if err != nil {
-		log.Fatalln("Error reading from database:", err)
+	if err := ref.Get(ctx, &data); err != nil {
+		log.Fatalln("Error reading from database", err)
 		return false, nil, err
 	}
 

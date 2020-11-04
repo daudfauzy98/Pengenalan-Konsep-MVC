@@ -29,12 +29,12 @@ func AddAntrianHandler(c *gin.Context) {
 
 // GetAntrianHandler is a function to get all queue
 func GetAntrianHandler(c *gin.Context) {
-	flag, data, err := model.GetAntrian()
+	flag, resp, err := model.GetAntrian()
 
 	if flag {
 		c.JSON(http.StatusOK, map[string]interface{}{
 			"status": "success!",
-			"data":   data,
+			"data":   resp,
 		})
 	} else {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
